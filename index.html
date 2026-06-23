@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
 
-  <!-- 🔥 Firebase SDK (compat) -->
+  <!-- Firebase SDK (compat) -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
@@ -24,22 +24,21 @@
         <span></span><span></span><span></span>
       </div>
       <ul class="nav-menu" id="navMenu">
-        <li><a href="#tours">Туры</a></li>
-        <li><a href="#advantages">Почему мы</a></li>
-        <li><a href="#gallery">Галерея</a></li>
+        <li><a href="#" id="navTours">Туры</a></li>
+        <li><a href="#" id="navExcursions">Экскурсии</a></li>
+        <li><a href="#about">О нас</a></li>
         <li><a href="#contact">Контакты</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- БАННЕР -->
+  <!-- БАННЕР (виден только на главной) -->
   <section class="banner" id="banner">
     <div class="banner-bg" id="bannerBg"></div>
     <div class="banner-content">
       <span class="banner-tag">Лучшие направления</span>
       <h1>Откройте <span>море</span> приключений</h1>
       <p>Путешествия, которые меняют жизнь. Лучшие маршруты и комфорт.</p>
-      <a href="#tours" class="btn">Выбрать тур <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="scroll-indicator">
       <span>Листайте вниз</span>
@@ -47,71 +46,83 @@
     </div>
   </section>
 
-  <!-- ТУРЫ -->
-  <section id="tours" class="container">
-    <div class="section-header fade-in">
-      <span class="section-tag">ПУТЕШЕСТВИЯ</span>
-      <h2 class="section-title"><i class="fas fa-umbrella-beach"></i>Популярные туры</h2>
-      <p class="section-subtitle">Самые востребованные направления от нашей команды</p>
-    </div>
-    <div class="tours-grid">
-      <!-- Карточка 1 -->
-      <div class="tour-card fade-in" data-tour="Санторини, Греция">
-        <div class="tour-image">
-          <img src="images/tour-santorini.jpg" alt="Санторини" loading="lazy" />
-          <span class="tour-badge">Горящий</span>
-        </div>
-        <div class="tour-card-body">
-          <h3>Санторини, Греция</h3>
-          <div class="location"><i class="fas fa-map-pin"></i> Эгейское море</div>
-          <p>Белоснежные домики, закаты и лазурные воды.</p>
-          <div class="tour-footer">
-            <span class="tour-price">₽ 80 000 <small>/ 7 ночей</small></span>
-            <button class="btn-order" onclick="openOrderModal(this)">Заказать <i class="fas fa-chevron-right"></i></button>
-          </div>
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main>
+    <!-- ТРИ БОЛЬШИЕ КНОПКИ (всегда видны, "Главная" появляется в каталоге) -->
+    <section class="main-actions" id="mainActions">
+      <div class="container">
+        <div class="main-actions-wrapper">
+          <button class="main-btn" id="mainToursBtn">Выбрать тур</button>
+          <button class="main-btn" id="mainExcursionsBtn">Выбрать экскурсию</button>
+          <button class="main-btn back-home-btn" id="backHomeBtn" style="display:none;"><i class="fas fa-arrow-left"></i> Главная</button>
         </div>
       </div>
-      <!-- Карточка 2 -->
-      <div class="tour-card fade-in" data-tour="Бора-Бора, Франц. Полинезия">
-        <div class="tour-image">
-          <img src="images/tour-borabora.jpg" alt="Бора-Бора" loading="lazy" />
-          <span class="tour-badge vip">VIP</span>
-        </div>
-        <div class="tour-card-body">
-          <h3>Бора-Бора, Франц. Полинезия</h3>
-          <div class="location"><i class="fas fa-map-pin"></i> Тихий океан</div>
-          <p>Райский отдых в овервотер-бунгало.</p>
-          <div class="tour-footer">
-            <span class="tour-price">₽ 195 000 <small>/ 10 ночей</small></span>
-            <button class="btn-order" onclick="openOrderModal(this)">Заказать <i class="fas fa-chevron-right"></i></button>
-          </div>
-        </div>
-      </div>
-      <!-- Карточка 3 -->
-      <div class="tour-card fade-in" data-tour="Бали, Индонезия">
-        <div class="tour-image">
-          <img src="images/tour-bali.jpg" alt="Бали" loading="lazy" />
-          <span class="tour-badge popular">Популярный</span>
-        </div>
-        <div class="tour-card-body">
-          <h3>Бали, Индонезия</h3>
-          <div class="location"><i class="fas fa-map-pin"></i> Индийский океан</div>
-          <p>Джунгли, храмы, сёрфинг и йога-ретриты.</p>
-          <div class="tour-footer">
-            <span class="tour-price">₽ 120 000 <small>/ 12 ночей</small></span>
-            <button class="btn-order" onclick="openOrderModal(this)">Заказать <i class="fas fa-chevron-right"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ПРЕИМУЩЕСТВА -->
-  <section id="advantages">
+    <!-- КАРУСЕЛЬ (ГАЛЕРЕЯ) – только на главной -->
+    <section id="gallerySlider" class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">ВДОХНОВЕНИЕ</span>
+        <h2 class="section-title"><i class="fas fa-images"></i>Вдохновляйтесь красотой мира</h2>
+        <p class="section-subtitle">Листайте фотографии и выбирайте своё следующее приключение</p>
+      </div>
+      <div class="slider-container fade-in">
+        <div class="slider-track" id="sliderTrack">
+          <!-- Слайды добавляются скриптом -->
+        </div>
+        <button class="slider-btn prev" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+    </section>
+
+    <!-- КАТАЛОГ ТУРОВ И ЭКСКУРСИЙ (изначально скрыт) -->
+    <section id="catalogSection" class="container" style="display:none;">
+      <div class="section-header fade-in">
+        <span class="section-tag">КАТАЛОГ</span>
+        <h2 class="section-title" id="catalogTitle"><i class="fas fa-umbrella-beach"></i>Туры</h2>
+        <p class="section-subtitle">Выберите идеальный вариант</p>
+      </div>
+
+      <!-- Статическая волна -->
+      <div class="wave-static"></div>
+
+      <!-- Фильтры и сортировка -->
+      <div class="catalog-controls fade-in">
+        <div class="filter-group">
+          <label>Цена от <span id="minPriceLabel">0</span> ₽</label>
+          <input type="range" id="priceMin" min="0" max="300000" step="5000" value="0" />
+          <label>Цена до <span id="maxPriceLabel">300000</span> ₽</label>
+          <input type="range" id="priceMax" min="0" max="300000" step="5000" value="300000" />
+        </div>
+        <div class="sort-group">
+          <label for="sortSelect">Сортировка</label>
+          <select id="sortSelect">
+            <option value="price-asc">По возрастанию цены</option>
+            <option value="price-desc">По убыванию цены</option>
+            <option value="name">По названию</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Контейнер для туров -->
+      <div class="tab-content active" id="tabTours">
+        <div class="cards-grid" id="toursGrid"></div>
+      </div>
+
+      <!-- Контейнер для экскурсий -->
+      <div class="tab-content" id="tabExcursions">
+        <div class="cards-grid" id="excursionsGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- О НАС -->
+  <section id="about">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-tag">ПРЕИМУЩЕСТВА</span>
-        <h2 class="section-title"><i class="fas fa-star"></i>Почему мы</h2>
+        <span class="section-tag">О НАС</span>
+        <h2 class="section-title"><i class="fas fa-star"></i>Почему выбирают нас</h2>
         <p class="section-subtitle">Нас выбирают за надёжность и душу</p>
       </div>
       <div class="advantages-grid">
@@ -135,33 +146,6 @@
           <h4>Прямые рейсы</h4>
           <p>Только проверенные авиакомпании</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ГАЛЕРЕЯ -->
-  <section id="gallery" class="container">
-    <div class="section-header fade-in">
-      <span class="section-tag">ВДОХНОВЕНИЕ</span>
-      <h2 class="section-title"><i class="fas fa-images"></i>Фотогалерея</h2>
-      <p class="section-subtitle">Вдохновляйтесь красотой мира</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item fade-in" onclick="openPhotoModal('images/gallery-1.jpg', 'Мальдивы')">
-        <img src="images/gallery-1.jpg" alt="Мальдивы" loading="lazy" />
-        <div class="overlay"><i class="fas fa-search-plus"></i></div>
-      </div>
-      <div class="gallery-item fade-in" onclick="openPhotoModal('images/gallery-2.jpg', 'Норвегия')">
-        <img src="images/gallery-2.jpg" alt="Норвегия" loading="lazy" />
-        <div class="overlay"><i class="fas fa-search-plus"></i></div>
-      </div>
-      <div class="gallery-item fade-in" onclick="openPhotoModal('images/gallery-3.jpg', 'Таиланд')">
-        <img src="images/gallery-3.jpg" alt="Таиланд" loading="lazy" />
-        <div class="overlay"><i class="fas fa-search-plus"></i></div>
-      </div>
-      <div class="gallery-item fade-in" onclick="openPhotoModal('images/gallery-4.jpg', 'Дубай')">
-        <img src="images/gallery-4.jpg" alt="Дубай" loading="lazy" />
-        <div class="overlay"><i class="fas fa-search-plus"></i></div>
       </div>
     </div>
   </section>
@@ -209,9 +193,9 @@
         </div>
         <div>
           <h4>Быстрые ссылки</h4>
-          <a href="#tours">Туры</a><br />
-          <a href="#advantages">О нас</a><br />
-          <a href="#gallery">Галерея</a><br />
+          <a href="#" id="footerTours">Туры</a><br />
+          <a href="#" id="footerExcursions">Экскурсии</a><br />
+          <a href="#about">О нас</a><br />
           <a href="#contact">Контакты</a>
         </div>
         <div>
@@ -232,7 +216,7 @@
     </div>
   </footer>
 
-  <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ПРОСМОТРА ФОТО -->
+  <!-- МОДАЛЬНЫЕ ОКНА -->
   <div class="modal photo-modal" id="photoModal">
     <div class="modal-content photo-modal-content">
       <span class="modal-close" onclick="closePhotoModal()">&times;</span>
@@ -243,7 +227,6 @@
     </div>
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ЗАКАЗА -->
   <div class="modal" id="orderModal">
     <div class="modal-content">
       <span class="modal-close" onclick="closeModal('orderModal')">&times;</span>
@@ -265,7 +248,6 @@
     </div>
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ВХОДА В АДМИНКУ -->
   <div class="modal" id="adminLoginModal">
     <div class="modal-content" style="max-width: 400px;">
       <span class="modal-close" onclick="closeModal('adminLoginModal')">&times;</span>
@@ -279,7 +261,6 @@
     </div>
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ДЛЯ АДМИН-ПАНЕЛИ -->
   <div class="modal" id="adminPanelModal">
     <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
       <span class="modal-close" onclick="closeModal('adminPanelModal')">&times;</span>
